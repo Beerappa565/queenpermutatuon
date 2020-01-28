@@ -1,0 +1,28 @@
+
+import java.io.*;
+
+class GFG {
+    static int count=0;
+    public static void queenpermutation(boolean []b,int qpsf,int tq,String ans)
+    {
+        if(tq==qpsf)
+        {
+            count++;
+            System.out.println(count+" "+ans);
+            return;
+        }
+        for(int i=0;i<b.length;i++)
+        {
+            if(b[i]==false)
+            {
+                b[i]=true;// making current value of box is true because it is already visited
+                queenpermutation(b,qpsf+1,tq,ans+"q"+i+"b"+i+" ");// calling recursively for unvisited boxes
+                b[i]=false;//for undo pupose and this is backtracking step
+            }
+        }
+    }
+	public static void main (String[] args) {
+	    
+		queenpermutation(new boolean [4],0,2,"");
+	}
+}
